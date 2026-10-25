@@ -1,0 +1,162 @@
+[
+ {
+  "id": 0,
+  "woname": "rest",
+  "displayname": "rest",
+  "wodirection": "right",
+  "duration": 10,
+  "targetarea": "rest"
+ },
+ {
+  "id": 1,
+  "woname": "banded-glute-bridge",
+  "displayname": "banded glute bridge",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 2,
+  "woname": "banded-hip-thrust",
+  "displayname": "banded hip thrust",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 3,
+  "woname": "banded-frog-pump",
+  "displayname": "banded frog pump",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 4,
+  "woname": "banded-clamshell",
+  "displayname": "banded clamshell",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 5,
+  "woname": "banded-lateral-walk",
+  "displayname": "banded lateral walk",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 6,
+  "woname": "banded-monster-walk",
+  "displayname": "banded monster walk",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 7,
+  "woname": "banded-squat",
+  "displayname": "banded squat",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 8,
+  "woname": "banded-donkey-kick",
+  "displayname": "banded donkey kick",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 9,
+  "woname": "banded-fire-hydrant",
+  "displayname": "banded fire hydrant",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 10,
+  "woname": "banded-kickback",
+  "displayname": "banded kickback",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 11,
+  "woname": "banded-standing-hip-abduction",
+  "displayname": "banded standing hip abduction",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 12,
+  "woname": "banded-seated-hip-abduction",
+  "displayname": "banded seated hip abduction",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "lower"
+ },
+ {
+  "id": 13,
+  "woname": "band-pull-apart",
+  "displayname": "band pull-apart",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "upper"
+ },
+ {
+  "id": 14,
+  "woname": "banded-face-pull",
+  "displayname": "banded face pull",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "upper"
+ },
+ {
+  "id": 15,
+  "woname": "banded-row",
+  "displayname": "banded row",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "upper"
+ },
+ {
+  "id": 16,
+  "woname": "banded-lat-pulldown",
+  "displayname": "banded lat pulldown",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "upper"
+ },
+ {
+  "id": 17,
+  "woname": "banded-pallof-press",
+  "displayname": "banded pallof press",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "core"
+ },
+ {
+  "id": 18,
+  "woname": "banded-woodchop",
+  "displayname": "banded woodchop",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "core"
+ },
+ {
+  "id": 19,
+  "woname": "banded-dead-bug",
+  "displayname": "banded dead bug",
+  "wodirection": "right",
+  "duration": 30,
+  "targetarea": "core"
+ }
+]

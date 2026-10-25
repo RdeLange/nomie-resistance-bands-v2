@@ -2,9 +2,9 @@
  {
   "id": 0,
   "woname": "rest",
-  "displayname": "rest",
+  "displayname": "transition",
   "wodirection": "right",
-  "duration": 10,
+  "duration": 30,
   "targetarea": "rest"
  },
  {
@@ -12,7 +12,7 @@
   "woname": "banded-glute-bridge",
   "displayname": "banded glute bridge",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -20,7 +20,7 @@
   "woname": "banded-hip-thrust",
   "displayname": "banded hip thrust",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -28,7 +28,7 @@
   "woname": "banded-frog-pump",
   "displayname": "banded frog pump",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -36,7 +36,7 @@
   "woname": "banded-clamshell",
   "displayname": "banded clamshell",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -44,7 +44,7 @@
   "woname": "banded-lateral-walk",
   "displayname": "banded lateral walk",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -52,7 +52,7 @@
   "woname": "banded-monster-walk",
   "displayname": "banded monster walk",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -60,7 +60,7 @@
   "woname": "banded-squat",
   "displayname": "banded squat",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -68,7 +68,7 @@
   "woname": "banded-donkey-kick",
   "displayname": "banded donkey kick",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -76,7 +76,7 @@
   "woname": "banded-fire-hydrant",
   "displayname": "banded fire hydrant",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -84,7 +84,7 @@
   "woname": "banded-kickback",
   "displayname": "banded kickback",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -92,7 +92,7 @@
   "woname": "banded-standing-hip-abduction",
   "displayname": "banded standing hip abduction",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -100,7 +100,7 @@
   "woname": "banded-seated-hip-abduction",
   "displayname": "banded seated hip abduction",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "lower"
  },
  {
@@ -108,7 +108,7 @@
   "woname": "band-pull-apart",
   "displayname": "band pull-apart",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "upper"
  },
  {
@@ -116,7 +116,7 @@
   "woname": "banded-face-pull",
   "displayname": "banded face pull",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "upper"
  },
  {
@@ -124,7 +124,7 @@
   "woname": "banded-row",
   "displayname": "banded row",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "upper"
  },
  {
@@ -132,7 +132,7 @@
   "woname": "banded-lat-pulldown",
   "displayname": "banded lat pulldown",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "upper"
  },
  {
@@ -140,7 +140,7 @@
   "woname": "banded-pallof-press",
   "displayname": "banded pallof press",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "core"
  },
  {
@@ -148,7 +148,7 @@
   "woname": "banded-woodchop",
   "displayname": "banded woodchop",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "core"
  },
  {
@@ -156,7 +156,7 @@
   "woname": "banded-dead-bug",
   "displayname": "banded dead bug",
   "wodirection": "right",
-  "duration": 30,
+  "duration": 45,
   "targetarea": "core"
  }
 ]

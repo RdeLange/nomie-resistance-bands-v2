@@ -29,28 +29,28 @@ describe('the routine', () => {
     expect(two).toEqual([...programsFor('full')[0].routine, REST_ID, ...programsFor('full')[0].routine]);
   });
 
-  it('a session of one program lasts 6 min 30 s, as v1 did', () => {
+  it('a session of one program lasts 12 min: ten exercises of 45 s with nine transitions of 30 s', () => {
     const schedule = buildSchedule(buildRoutine('core', 1, () => 0));
     const total = schedule[schedule.length - 1].end;
-    expect(total).toBe(6.5 * 60 * 1000);
+    expect(total).toBe(12 * 60 * 1000);
   });
 });
 
 describe('the schedule', () => {
-  it('lays the exercises and the rests out one after the other, rests lasting 10 s', () => {
+  it('lays the exercises and the transitions out one after the other, transitions lasting 30 s', () => {
     const schedule = buildSchedule(routine);
     expect(schedule.map((s) => [s.start, s.end])).toEqual([
-      [0, 30000],
-      [30000, 30000 + REST_SECONDS * 1000],
-      [40000, 70000],
+      [0, 45000],
+      [45000, 45000 + REST_SECONDS * 1000],
+      [75000, 120000],
     ]);
   });
 
   it('tells where the session is at a moment', () => {
     const schedule = buildSchedule(routine);
-    expect(positionAt(schedule, 5000)).toMatchObject({ index: 0, inside: 5000, left: 25000, finished: false });
-    expect(positionAt(schedule, 35000)).toMatchObject({ index: 1, inside: 5000, finished: false });
-    expect(positionAt(schedule, 70000).finished).toBe(true);
+    expect(positionAt(schedule, 5000)).toMatchObject({ index: 0, inside: 5000, left: 40000, finished: false });
+    expect(positionAt(schedule, 50000)).toMatchObject({ index: 1, inside: 5000, finished: false });
+    expect(positionAt(schedule, 120000).finished).toBe(true);
   });
 });
 
@@ -71,35 +71,35 @@ describe('the clock: one clock for the session and the exercise', () => {
     session.pause(12000);
     session.resume(100000);
     const at = session.position(112000);
-    // 12 s before the pause plus 12 s after it: 24 s into the first exercise, 6 s left of it
+    // 12 s before the pause plus 12 s after it: 24 s into the first exercise, 21 s left of it
     expect(session.elapsed(112000)).toBe(24000);
-    expect(at).toMatchObject({ index: 0, inside: 24000, left: 6000 });
+    expect(at).toMatchObject({ index: 0, inside: 24000, left: 21000 });
   });
 
   it('skip next goes to the start of the next segment, and to the end after the last one', () => {
     const session = new WorkoutSession(routine);
     session.start(0);
     session.skipNext(5000);
-    expect(session.elapsed(5000)).toBe(30000);
+    expect(session.elapsed(5000)).toBe(45000);
     session.skipNext(5000);
-    expect(session.elapsed(5000)).toBe(40000);
+    expect(session.elapsed(5000)).toBe(75000);
     session.skipNext(5000);
-    expect(session.elapsed(5000)).toBe(70000);
+    expect(session.elapsed(5000)).toBe(120000);
     expect(session.finished(5000)).toBe(true);
   });
 
   it('skip previous restarts an exercise that has run a little, and goes back when it has just started', () => {
     const session = new WorkoutSession(routine);
     session.start(0);
-    // at 35 s the rest is running; skip next goes to the last exercise, at 40 s
+    // at 35 s the first exercise is still running; skip next goes to the transition, at 45 s
     session.skipNext(35000);
-    expect(session.elapsed(35000)).toBe(40000);
-    // 4 s into the last exercise: going back restarts it
-    session.skipPrevious(44000);
-    expect(session.elapsed(44000)).toBe(40000);
-    // 1 s into it now: going back goes to the rest before it, at 30 s
-    session.skipPrevious(45000);
-    expect(session.elapsed(45000)).toBe(30000);
+    expect(session.elapsed(35000)).toBe(45000);
+    // 4 s into the transition: going back restarts it
+    session.skipPrevious(49000);
+    expect(session.elapsed(49000)).toBe(45000);
+    // 1 s into it now: going back goes to the exercise before it, at 0
+    session.skipPrevious(50000);
+    expect(session.elapsed(50000)).toBe(0);
     expect(RESTART_AFTER_MS).toBe(3000);
   });
 
@@ -107,8 +107,8 @@ describe('the clock: one clock for the session and the exercise', () => {
     const session = new WorkoutSession(routine);
     session.start(0);
     expect(session.exercises).toBe(2);
-    expect(session.completed(35000)).toBe(1);
-    expect(session.completed(80000)).toBe(2);
+    expect(session.completed(50000)).toBe(1);
+    expect(session.completed(130000)).toBe(2);
   });
 });
 

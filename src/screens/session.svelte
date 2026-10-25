@@ -19,6 +19,10 @@
     session && pos?.segment && !resting ? session.schedule.slice(0, pos.index + 1).filter((s) => s.workout.id !== REST_ID).length : 0,
   );
   const upNext = $derived(session && pos ? session.schedule[pos.index + 1]?.workout.displayname : undefined);
+  // the next exercise, after any transition: shown with its drawing while the band is changed
+  const upcoming = $derived(
+    session && pos ? session.schedule.slice(pos.index + 1).find((s) => s.workout.id !== REST_ID)?.workout : undefined,
+  );
   const targetName = $derived(TARGETS.find((t) => t.id === app.target)?.label ?? '');
   const week = $derived(thisWeek(app.history, new Date()));
 
@@ -67,11 +71,18 @@
 
   <section class="stage">
     <Pose woname={current.woname} direction={current.wodirection} paused={app.status === 'paused'} colours={app.settings.colours} />
-    <p class="name">{resting ? 'Rest' : current.displayname}</p>
-    <p class="muted">{resting ? 'Next exercise soon' : `Exercise ${exerciseNumber} of ${session.exercises}`}</p>
+    <p class="name">{resting ? 'Transition' : current.displayname}</p>
+    <p class="muted">{resting ? 'Change the band, then get ready' : `Exercise ${exerciseNumber} of ${session.exercises}`}</p>
     <p class="exercise-time">{clock(pos?.left ?? 0)}</p>
     <div class="bar small" aria-hidden="true"><div class="fill" style="width: {exerciseShare}%"></div></div>
-    {#if upNext}<p class="muted">Up next: {upNext}</p>{/if}
+    {#if resting && upcoming}
+      <div class="upcoming">
+        <div class="mini" aria-hidden="true">
+          <Pose woname={upcoming.woname} direction={upcoming.wodirection} paused={false} colours={app.settings.colours} />
+        </div>
+        <p class="muted">Up next: {upcoming.displayname}</p>
+      </div>
+    {:else if upNext}<p class="muted">Up next: {upNext}</p>{/if}
   </section>
 
   <div class="controls">
@@ -86,6 +97,9 @@
 
 <style>
   .card { padding: 14px 16px; border-radius: 16px; background: var(--card); margin: 8px 0; }
+  .upcoming { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .mini { width: 120px; height: 90px; overflow: hidden; }
+  .mini :global(.pose) { height: 90px; }
   .head { display: flex; align-items: center; justify-content: space-between; }
   .caption { margin: 0; font-size: calc(13px * var(--scale)); font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
   .big { margin: 2px 0 0; font-size: calc(30px * var(--scale)); font-weight: 700; font-variant-numeric: tabular-nums; }

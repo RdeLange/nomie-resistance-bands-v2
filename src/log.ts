@@ -19,5 +19,5 @@ export const logText = (entry: string, finished: Finished): string =>
 // The note for the timeline: the heading, the log text and, when a tracker is chosen, its value in seconds
 export const sessionNote = (settings: Settings, finished: Finished): string => {
   const trackerLine = settings.tracker ? `#${settings.tracker}(${Math.round(finished.minutes * 60)})\n` : '';
-  return `Resistance Bands 💪:\n${logText(settings.logEntry, finished)}\n\n${trackerLine}`;
+  return `Resistance Bands 🏋️:\n${logText(settings.logEntry, finished)}\n\n${trackerLine}`;
 };

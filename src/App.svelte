@@ -25,7 +25,7 @@
   onMount(() => {
     const plugin = new NomiePlugin({
       name: 'Resistance Bands',
-      emoji: '💪',
+      emoji: '🏋️',
       description: 'Resistance band workouts of about six and a half minutes, with an animation for each exercise. The session and each exercise have a timer, and the workout is logged to Nomie.',
       uses: ['createNote', 'selectTrackables', 'confirm', 'getStorageItem', 'setStorageItem'],
       version: '2.0',
@@ -49,7 +49,7 @@
 <div class="root" style="--page: {palette.page}; --card: {palette.card}; --card-inner: {palette.cardInner}; --text: {palette.text}; --muted: {palette.textSecondary}; --line: {palette.separator}; --fill: {palette.fill}; --tint: {palette.tint}; --on-tint: {palette.onTint}; --tint-soft: {palette.tintSoft}; --good: {palette.good}; --danger: {palette.danger}; --scale: {scale};">
   <header class="top">
     <div class="title">
-      <span aria-hidden="true">💪</span>
+      <span aria-hidden="true">🏋️</span>
       <h1>Resistance Bands</h1>
     </div>
     {#if !inSession}

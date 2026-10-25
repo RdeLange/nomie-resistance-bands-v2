@@ -26,7 +26,7 @@
     const plugin = new NomiePlugin({
       name: 'Resistance Bands',
       emoji: '🏋️',
-      description: 'Resistance band workouts of about six and a half minutes, with an animation for each exercise. The session and each exercise have a timer, and the workout is logged to Nomie.',
+      description: 'Resistance band workouts of about twelve minutes, with an animation for each exercise. The session and each exercise have a timer, and the workout is logged to Nomie.',
       uses: ['createNote', 'selectTrackables', 'confirm', 'getStorageItem', 'setStorageItem'],
       version: '2.0',
       addToCaptureMenu: true,

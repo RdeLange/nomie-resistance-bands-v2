@@ -1,3 +1,4 @@
+import { t } from './i18n/index.svelte';
 // The state of the plugin: the settings, the history, and the session that runs now. The screens show it and call its actions.
 import { DURATIONS, type Target } from './data/catalogue';
 import { playCue, unlockAudio } from './audio';
@@ -59,7 +60,7 @@ class AppState {
   }
 
   async clearHistory(): Promise<void> {
-    const res = await this.plugin.confirm('Clear the history?', 'The sessions you finished are removed from the plugin. Your timeline is not changed.');
+    const res = await this.plugin.confirm(t('clearQ'), t('clearBody'));
     if (!res?.value) return;
     this.history = [];
     this.save();
@@ -106,7 +107,7 @@ class AppState {
 
   // Ending early asks first. A finished session is not asked about.
   async endEarly(): Promise<void> {
-    const res = await this.plugin.confirm('End the session now?', 'The session is ended. What you finished so far is kept in your history.');
+    const res = await this.plugin.confirm(t('endQ'), t('endBody'));
     if (res?.value) this.finish(true);
   }
 

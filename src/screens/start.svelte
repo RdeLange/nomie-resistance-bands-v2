@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../i18n/index.svelte';
   import { app } from '../plugin-state.svelte';
   import { DURATIONS, TARGETS } from '../data/catalogue';
   import { thisWeek } from '../history';
@@ -9,34 +10,34 @@
 </script>
 
 <section class="card week">
-  <p class="caption">This week</p>
-  <p class="big">{week.sessions} <span class="muted">{week.sessions === 1 ? 'session' : 'sessions'}</span></p>
-  <p class="muted">{week.minutes} minutes of exercise</p>
+  <p class="caption">{t('thisWeek')}</p>
+  <p class="big">{week.sessions} <span class="muted">{week.sessions === 1 ? t('sessionOne') : t('sessionMany')}</span></p>
+  <p class="muted">{t('minutesExercise', { minutes: week.minutes })}</p>
 </section>
 
-<h2>Length</h2>
+<h2>{t('length')}</h2>
 <div class="chips">
   {#each DURATIONS as d, i (d.label)}
     <button class:on={app.durationIndex === i} aria-pressed={app.durationIndex === i} onclick={() => (app.durationIndex = i)}>{d.label}</button>
   {/each}
 </div>
 
-<h2>Target</h2>
+<h2>{t('target')}</h2>
 <div class="chips">
-  {#each TARGETS as t (t.id)}
-    <button class:on={app.target === t.id} aria-pressed={app.target === t.id} onclick={() => (app.target = t.id)}>{t.label}</button>
+  {#each TARGETS as target (target.id)}
+    <button class:on={app.target === target.id} aria-pressed={app.target === target.id} onclick={() => (app.target = target.id)}>{target.label}</button>
   {/each}
 </div>
 
-<button class="primary" onclick={() => app.start()}>Start workout</button>
+<button class="primary" onclick={() => app.start()}>{t('startWorkout')}</button>
 
 {#if recent.length}
-  <h2>Recent</h2>
+  <h2>{t('recent')}</h2>
   <section class="card">
     {#each recent as entry (entry.at)}
       <div class="row">
         <span>{shortDate(entry.at)}</span>
-        <span class="muted">{entry.minutes} min · {entry.completed} of {entry.exercises}{entry.early ? ' · ended early' : ''}</span>
+        <span class="muted">{t('minShort', { minutes: entry.minutes })} · {t('completedOf', { completed: entry.completed, exercises: entry.exercises })}{entry.early ? t('endedEarlySuffix') : ''}</span>
       </div>
     {/each}
   </section>

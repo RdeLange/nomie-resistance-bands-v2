@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../i18n/index.svelte';
   import { app } from '../plugin-state.svelte';
   import Pose from '../components/pose.svelte';
   import { WORKOUTS, REST_ID, type Workout } from '../data/catalogue';
@@ -11,7 +12,7 @@
   let direction = $state<'left' | 'right'>('right');
   let paused = $state(false);
 
-  const TARGET_NAMES: Record<string, string> = { full: 'Full body', upper: 'Upper body', lower: 'Lower body', core: 'Core', rest: 'Rest' };
+  const TARGET_NAMES: Record<string, string> = { get full() { return t('targetFull'); }, get upper() { return t('targetUpper'); }, get lower() { return t('targetLower'); }, get core() { return t('targetCore'); }, get rest() { return t('targetRest'); } };
 </script>
 
 <div class="head">
@@ -33,8 +34,8 @@
 </section>
 
 <div class="controls">
-  <button class:on={direction === 'left'} onclick={() => (direction = direction === 'left' ? 'right' : 'left')}>Mirror</button>
-  <button class:on={paused} onclick={() => (paused = !paused)}>{paused ? 'Play' : 'Pause'}</button>
+  <button class:on={direction === 'left'} onclick={() => (direction = direction === 'left' ? 'right' : 'left')}>{t('mirror')}</button>
+  <button class:on={paused} onclick={() => (paused = !paused)}>{paused ? t('play') : t('pausePreview')}</button>
 </div>
 
 <style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../i18n/index.svelte';
   import { app } from '../plugin-state.svelte';
   import { DEFAULT_COLOURS, type Colours, type Settings } from '../settings';
   import Pose from '../components/pose.svelte';
@@ -7,10 +8,10 @@
 
   // the colours a part of the figure can take: the choices are the ones of the figure, so every one of them reads well
   const CHOICES: Record<keyof Colours, { label: string; colours: string[] }> = {
-    flesh: { label: 'Skin', colours: ['#f6d7b8', '#d5ae83', '#b07a4f', '#7a4a2b', '#4a2c1c'] },
-    hair: { label: 'Hair', colours: ['#412323', '#1c1c1c', '#8b5a2b', '#d9b26f', '#b8b8b8'] },
-    pants: { label: 'Pants', colours: ['#414141', '#1f3b5c', '#4b5d3a', '#6b4a2e', '#2b2b3d'] },
-    shirt: { label: 'Shirt', colours: ['#42cbef', '#ef5350', '#66bb6a', '#ffca28', '#ab47bc', '#ffffff'] },
+    flesh: { get label() { return t('skin'); }, colours: ['#f6d7b8', '#d5ae83', '#b07a4f', '#7a4a2b', '#4a2c1c'] },
+    hair: { get label() { return t('hair'); }, colours: ['#412323', '#1c1c1c', '#8b5a2b', '#d9b26f', '#b8b8b8'] },
+    pants: { get label() { return t('pants'); }, colours: ['#414141', '#1f3b5c', '#4b5d3a', '#6b4a2e', '#2b2b3d'] },
+    shirt: { get label() { return t('shirt'); }, colours: ['#42cbef', '#ef5350', '#66bb6a', '#ffca28', '#ab47bc', '#ffffff'] },
   };
   const parts = Object.keys(CHOICES) as Array<keyof Colours>;
 
@@ -31,7 +32,7 @@
 </script>
 
 <section class="card">
-  <p class="caption">The figure</p>
+  <p class="caption">{t('figure')}</p>
   <div class="preview">
     <Pose woname="banded-squat" direction="right" paused={false} colours={app.settings.colours} />
   </div>
@@ -50,44 +51,44 @@
       </div>
     {/if}
   {/each}
-  <button class="link" onclick={() => update({ colours: { ...DEFAULT_COLOURS } })}>Reset the figure</button>
+  <button class="link" onclick={() => update({ colours: { ...DEFAULT_COLOURS } })}>{t('resetFigure')}</button>
 </section>
 
 <section class="card">
-  <p class="caption">Timeline</p>
+  <p class="caption">{t('timeline')}</p>
   <div class="row">
-    <span>Tracker</span>
+    <span>{t('tracker')}</span>
     <span class="muted">{app.settings.tracker ? `#${app.settings.tracker}` : 'None'}</span>
   </div>
   <div class="actions">
-    <button class="chip" onclick={chooseTracker}>{app.settings.tracker ? 'Change' : 'Choose a tracker'}</button>
-    {#if app.settings.tracker}<button class="chip danger" onclick={() => update({ tracker: null })}>Remove</button>{/if}
+    <button class="chip" onclick={chooseTracker}>{app.settings.tracker ? t('change') : t('chooseTracker')}</button>
+    {#if app.settings.tracker}<button class="chip danger" onclick={() => update({ tracker: null })}>{t('remove')}</button>{/if}
   </div>
   <label class="field">
-    <span class="muted">Text of the log</span>
+    <span class="muted">{t('logText')}</span>
     <textarea rows="3" value={app.settings.logEntry} oninput={(e) => update({ logEntry: e.currentTarget.value })}></textarea>
-    <span class="hint">&lt;duration&gt; is the length in minutes, &lt;workout&gt; the target.</span>
+    <span class="hint">{t('logHint')}</span>
   </label>
   <div class="row">
-    <span>Ask before logging</span>
-    <button class="toggle" class:on={app.settings.askBeforeLog} aria-pressed={app.settings.askBeforeLog} aria-label="Ask before logging" onclick={() => update({ askBeforeLog: !app.settings.askBeforeLog })}></button>
+    <span>{t('askBeforeLog')}</span>
+    <button class="toggle" class:on={app.settings.askBeforeLog} aria-pressed={app.settings.askBeforeLog} aria-label={t('askBeforeLog')} onclick={() => update({ askBeforeLog: !app.settings.askBeforeLog })}></button>
   </div>
 </section>
 
 <section class="card">
   <div class="row">
-    <span>Sound</span>
-    <button class="toggle" class:on={app.settings.sound} aria-pressed={app.settings.sound} aria-label="Sound" onclick={() => update({ sound: !app.settings.sound })}></button>
+    <span>{t('sound')}</span>
+    <button class="toggle" class:on={app.settings.sound} aria-pressed={app.settings.sound} aria-label={t('sound')} onclick={() => update({ sound: !app.settings.sound })}></button>
   </div>
-  <p class="hint">A beep when an exercise changes, and a tick in its last three seconds.</p>
+  <p class="hint">{t('soundHint')}</p>
 </section>
 
 <section class="card">
   <p class="muted">{app.history.length} sessions in your history.</p>
-  <button class="link danger" onclick={() => app.clearHistory()}>Clear the history</button>
+  <button class="link danger" onclick={() => app.clearHistory()}>{t('clearHistory')}</button>
 </section>
 
-<button class="ghost" onclick={back}>Back</button>
+<button class="ghost" onclick={back}>{t('back')}</button>
 
 <style>
   .card { padding: 14px 16px; border-radius: 16px; background: var(--card); margin: 12px 0; }

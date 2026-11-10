@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import { app } from './plugin-state.svelte';
   import { paletteFrom, glassFrom, tintTextFrom, dangerTextFrom, type Palette, type Glass } from './palette';
+  import { setLanguage } from './i18n/index.svelte';
   import { onPrefsChange } from './prefs-live';
   import Start from './screens/start.svelte';
   import Session from './screens/session.svelte';
@@ -22,6 +23,7 @@
   const applyNomieValues = (plugin: any) => {
     if (!plugin?.prefs) return;
     palette = paletteFrom(plugin.prefs);
+    setLanguage(plugin.prefs?.language);
     glass = glassFrom(plugin.prefs);
     tintText = tintTextFrom(plugin.prefs);
     dangerText = dangerTextFrom(plugin.prefs);

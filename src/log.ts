@@ -1,3 +1,5 @@
+import { t } from './i18n/index.svelte';
+import { EN_LOG_ENTRY } from './settings';
 // The note a finished session writes to the timeline, and the text it uses. v1 replaced <duration> and <workout> in the text.
 import type { Settings } from './settings';
 import { TARGETS, type Target } from './data/catalogue';
@@ -19,5 +21,6 @@ export const logText = (entry: string, finished: Finished): string =>
 // The note for the timeline: the heading, the log text and, when a tracker is chosen, its value in seconds
 export const sessionNote = (settings: Settings, finished: Finished): string => {
   const trackerLine = settings.tracker ? `#${settings.tracker}(${Math.round(finished.minutes * 60)})\n` : '';
-  return `Resistance Bands 🏋️:\n${logText(settings.logEntry, finished)}\n\n${trackerLine}`;
+  const template = settings.logEntry === EN_LOG_ENTRY ? t('defaultLogEntry') : settings.logEntry;
+  return `${t('noteHead')}:\n${logText(template, finished)}\n\n${trackerLine}`;
 };

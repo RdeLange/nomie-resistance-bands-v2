@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from '../i18n/index.svelte';
   import { app } from '../plugin-state.svelte';
   import Pose from '../components/pose.svelte';
   import { clock } from '../format';
@@ -47,32 +48,32 @@
 
 {#if app.status === 'done' && app.summary}
   <section class="card done">
-    <p class="caption">{app.summary.early ? 'Session ended early' : 'Session complete'}</p>
-    <h1>{app.summary.early ? 'Session ended' : 'Well done'}</h1>
-    <p class="big">{app.summary.minutes} min</p>
-    <p class="muted">{app.summary.completed} of {app.summary.exercises} exercises · {targetName}</p>
+    <p class="caption">{app.summary.early ? t('sessionEndedEarly') : t('sessionComplete')}</p>
+    <h1>{app.summary.early ? t('sessionEnded') : t('wellDone')}</h1>
+    <p class="big">{t('minShort', { minutes: app.summary.minutes })}</p>
+    <p class="muted">{t('exercisesOf', { completed: app.summary.completed, exercises: app.summary.exercises })} · {targetName}</p>
     <p class="muted">This week: {week.sessions} {week.sessions === 1 ? 'session' : 'sessions'}, {week.minutes} minutes</p>
     {#if app.logged}
-      <p class="notice">Logged to your timeline.</p>
+      <p class="notice">{t('loggedToTimeline')}</p>
     {:else if app.settings.askBeforeLog}
-      <button class="primary" onclick={() => app.logSession()}>Log to timeline</button>
+      <button class="primary" onclick={() => app.logSession()}>{t('logToTimeline')}</button>
     {/if}
   </section>
-  <button class="ghost" onclick={() => app.reset()}>Done</button>
+  <button class="ghost" onclick={() => app.reset()}>{t('done')}</button>
 {:else if session}
   <section class="card head">
     <div>
       <p class="caption">{targetName}</p>
-      <p class="big" aria-live="off">{clock(sessionLeft)} <span class="muted">left</span></p>
+      <p class="big" aria-live="off">{clock(sessionLeft)} <span class="muted">{t('left')}</span></p>
     </div>
-    {#if app.status === 'paused'}<span class="pill">Paused</span>{/if}
+    {#if app.status === 'paused'}<span class="pill">{t('paused')}</span>{/if}
   </section>
   <div class="bar" aria-hidden="true"><div class="fill" style="width: {sessionShare}%"></div></div>
 
   <section class="stage">
     <Pose woname={current.woname} direction={current.wodirection} paused={app.status === 'paused'} colours={app.settings.colours} />
-    <p class="name">{resting ? 'Transition' : current.displayname}</p>
-    <p class="muted">{resting ? 'Change the band, then get ready' : `Exercise ${exerciseNumber} of ${session.exercises}`}</p>
+    <p class="name">{resting ? t('transition') : current.displayname}</p>
+    <p class="muted">{resting ? t('changeBand') : t('exerciseOf', { n: exerciseNumber, total: session.exercises })}</p>
     <p class="exercise-time">{clock(pos?.left ?? 0)}</p>
     <div class="bar small" aria-hidden="true"><div class="fill" style="width: {exerciseShare}%"></div></div>
     {#if resting && upcoming}
@@ -80,19 +81,19 @@
         <div class="mini" aria-hidden="true">
           <Pose woname={upcoming.woname} direction={upcoming.wodirection} paused={false} colours={app.settings.colours} />
         </div>
-        <p class="muted">Up next: {upcoming.displayname}</p>
+        <p class="muted">{t('upNext', { name: upcoming.displayname })}</p>
       </div>
-    {:else if upNext}<p class="muted">Up next: {upNext}</p>{/if}
+    {:else if upNext}<p class="muted">{t('upNext', { name: upNext })}</p>{/if}
   </section>
 
   <div class="controls">
-    <button aria-label="Previous exercise" onclick={() => app.previous()}>⏮</button>
-    <button class="main" aria-label={app.status === 'paused' ? 'Resume' : 'Pause'} onclick={() => app.togglePause()}>
-      {app.status === 'paused' ? '▶︎ Resume' : '❚❚ Pause'}
+    <button aria-label={t('previous')} onclick={() => app.previous()}>⏮</button>
+    <button class="main" aria-label={app.status === 'paused' ? t('resume') : t('pause')} onclick={() => app.togglePause()}>
+      {app.status === 'paused' ? `▶︎ ${t('resume')}` : `❚❚ ${t('pause')}`}
     </button>
-    <button aria-label="Next exercise" onclick={() => app.next()}>⏭</button>
+    <button aria-label={t('next')} onclick={() => app.next()}>⏭</button>
   </div>
-  <button class="link danger" onclick={() => app.endEarly()}>End session</button>
+  <button class="link danger" onclick={() => app.endEarly()}>{t('endSession')}</button>
 {/if}
 
 <style>

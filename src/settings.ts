@@ -15,10 +15,13 @@ export type Settings = {
 
 export const DEFAULT_COLOURS: Colours = { flesh: '#d5ae83', hair: '#412323', pants: '#414141', shirt: '#42cbef' };
 
+// The English default of the note. A note still on this default is written in the current language (see log.ts).
+export const EN_LOG_ENTRY = 'Just finished <workout> exercise taking <duration> minutes.';
+
 export const DEFAULT_SETTINGS: Settings = {
   colours: DEFAULT_COLOURS,
   tracker: null,
-  logEntry: 'Just finished <workout> exercise taking <duration> minutes.',
+  logEntry: EN_LOG_ENTRY,
   askBeforeLog: true,
   sound: true,
 };

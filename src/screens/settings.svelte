@@ -106,7 +106,7 @@
   .field { display: flex; flex-direction: column; gap: 4px; padding: 10px 0 4px; }
   textarea { box-sizing: border-box; width: 100%; padding: 10px 12px; border: 0; border-radius: 12px; background: var(--card-inner, var(--fill)); color: var(--text); font: inherit; resize: vertical; }
   .actions { display: flex; gap: 8px; padding-bottom: 6px; }
-  .chip { padding: 8px 12px; border: 0; border-radius: 10px; background: var(--fill); color: var(--tint); font: inherit; cursor: pointer; }
+  .chip { padding: 8px 12px; border: 0; border-radius: 10px; background: var(--fill); color: var(--tint-text); font: inherit; cursor: pointer; }
   .chip.danger { color: var(--danger); }
   .toggle { position: relative; width: 50px; height: 30px; border: 0; border-radius: 15px; background: var(--switch-off, var(--fill)); cursor: pointer; flex-shrink: 0; }
   .toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 26px; height: 26px; border-radius: 50%; background: #fff; transition: transform 0.15s; }

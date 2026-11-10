@@ -102,7 +102,7 @@
   .mini :global(.pose) { height: 90px; }
   .head { display: flex; align-items: center; justify-content: space-between; }
   .caption { margin: 0; font-size: calc(13px * var(--scale)); font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
-  .big { margin: 2px 0 0; font-size: calc(30px * var(--scale)); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .big { font-family: var(--ios-font-rounded); margin: 2px 0 0; font-size: calc(30px * var(--scale)); font-weight: 700; font-variant-numeric: tabular-nums; }
   .muted { margin: 4px 0; color: var(--muted); }
   .pill { padding: 4px 10px; border-radius: 999px; background: var(--fill); color: var(--text); font-size: calc(13px * var(--scale)); font-weight: 600; }
   .bar { height: 6px; border-radius: 3px; background: var(--fill); overflow: hidden; margin: 4px 0 12px; }
